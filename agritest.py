@@ -1,4 +1,4 @@
-# Using xgboost
+# Using xgboost test
 
 import pandas as pd
 import numpy as np
@@ -42,7 +42,7 @@ x_test = df.to_numpy()
 '''
 model = XGBClassifier(booster='gbtree', objective='multi:softmax',
     learning_rate=0.1, eval_metric="auc",
-    max_depth=5, subsample=0.9, 
+    max_depth=10, subsample=0.9, 
     colsample_bytree=0.8, num_class=out_count,
     n_estimators=200, gamma=0)
 
@@ -58,3 +58,5 @@ output['Crop_Damage'] = val
 print(output)
 
 output.to_csv('/root/Documents/crop/output.csv', index= False)
+
+
