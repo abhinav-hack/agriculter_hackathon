@@ -15,13 +15,13 @@ df = pd.read_csv('/root/Documents/crop/train_yaOffsB.csv')
 print(df.tail())
 print(df.shape)
 
-# filling na values
+# filling na values      ## no need of it xgboost will handle it
 
-df.isnull().sum()
-df.Number_Weeks_Used.fillna(0, inplace=True)
+#df.isnull().sum()
+#df.Number_Weeks_Used.fillna(0, inplace=True)
 
 
-# poping out output
+#poping out output 
 Crop_Damage = df.pop('Crop_Damage')
 out_count = len(Crop_Damage.unique())
 
@@ -64,25 +64,3 @@ print('validation acc')
 valpred = model.predict(x_validate)
 print(accuracy_score(y_validate, valpred))
 
-'''
-model = XGBClassifier(booster='gbtree', objective='multi:softmax',    learning_rate=0.5, eval_metric="auc",
-    max_depth=14, subsample=0.7, colsample_bylevel=0.6,
-    colsample_bytree=0.6, num_class=out_count,
-    n_estimators=300, gamma=0, alpha= 2)
-
-
-model.fit(x_train, y_train, verbose=True)
-#print('preparing for kfold')
-
-#k_fold = KFold(len(x_validate), n_splits=3, shuffle=True, random_state=0)
-#print(np.mean(cross_val_score(model, x_validate, y_validate, cv=k_fold, n_jobs=1))) 
-
-print('train acc')
-pred = model.predict(x_train)
-print(accuracy_score(y_train, pred))
-
-print('validation acc')
-valpred = model.predict(x_validate)
-print(accuracy_score(y_validate, valpred))
-
-'''

@@ -17,10 +17,10 @@ df = pd.read_csv('/root/Documents/crop/test_pFkWwen.csv')
 print(df.tail())
 print(df.shape)
 
-# filling na values
+# filling na values     ## no need of it xgboost will handle it
 
-df.isnull().sum()
-df.Number_Weeks_Used.fillna(0, inplace=True)
+#df.isnull().sum()
+#df.Number_Weeks_Used.fillna(0, inplace=True)
 
 
 # poping out output
