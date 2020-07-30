@@ -39,15 +39,19 @@ x_test = df.to_numpy()
 #y_train = Crop_Damage.to_numpy()
 
 # Create a model
-'''
-model = XGBClassifier(booster='gbtree', objective='multi:softmax',
-    learning_rate=0.1, eval_metric="auc",
-    max_depth=10, subsample=0.9, 
-    colsample_bytree=0.8, num_class=out_count,
-    n_estimators=200, gamma=0)
 
-%time model.fit(x_train, y_train, verbose=True)
-'''
+# Here is the model that imported from train agritry module
+
+#model = XGBClassifier(booster='gbtree', objective='multi:softmax',
+#    learning_rate=0.9, eval_metric="auc",
+#    max_depth=9, subsample=0.8, colsample_bylevel=0.6,
+#    colsample_bytree=0.7, num_class=out_count,
+#     n_jobs=6,
+#    max_delta_step = 1, min_child_weight=0.1,
+#    n_estimators=300, gamma=0.2, alpha= 0.2)
+
+#model.fit(x_train, y_train, verbose=True)
+
 val = model.predict(x_test)
 
 #print(accuracy_score(y_train, val))

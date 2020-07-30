@@ -36,18 +36,18 @@ df.insert(0, 'ID', id)
 x_train = df.to_numpy()
 y_train = Crop_Damage.to_numpy()
 
-
+print(df.head())
 x_train, x_validate = x_train[:71085], x_train[71085:]
 y_train, y_validate = y_train[:71085], y_train[71085:] 
 
 # Create a model
-
 model = XGBClassifier(booster='gbtree', objective='multi:softmax',
-    learning_rate=0.5, eval_metric="auc",
-    max_depth=14, subsample=0.7, colsample_bylevel=0.6,
-    colsample_bytree=0.6, num_class=out_count,
-    max_delta_step = 1,
-    n_estimators=300, gamma=3, alpha= 3)
+    learning_rate=0.9, eval_metric="auc",
+    max_depth=9, subsample=0.8, colsample_bylevel=0.6,
+    colsample_bytree=0.7, num_class=out_count,
+     n_jobs=6,
+    max_delta_step = 1, min_child_weight=0.1,
+    n_estimators=300, gamma=0.2, alpha= 0.2)
 
 
 model.fit(x_train, y_train, verbose=True)
